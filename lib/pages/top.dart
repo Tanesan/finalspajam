@@ -1,50 +1,88 @@
 import 'package:flutter/material.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'dart:developer' as developer;
+import 'package:twitter_login/twitter_login.dart';
+// Set provider
+final FirebaseAuth _auth = FirebaseAuth.instance;
+// Example code of how to sign in with Twitter.
 
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+class Toppage extends StatelessWidget {
+  // final TextEditingController _tokenController = TextEditingController();
+  // final TextEditingController _tokenSecretController = TextEditingController();
+  // const Toppage({Key? key}) : super(key: key);
+  void _pushPage(BuildContext context, Widget page) {
+    Navigator.of(context) /*!*/ .push(
+      MaterialPageRoute<void>(builder: (_) => page),
+    );
   }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text("WW"),
-      ),);
+      body: Container(
+        decoration: BoxDecoration(
+            gradient:  RadialGradient(
+              radius: 2,
+              colors: [
+                Colors.white,
+                Colors.blue,
+              ],
+            )
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text("なりきり?!CHANGE",style: Theme.of(context).textTheme.headline1),
+              Container(
+                padding: const EdgeInsets.all(16),
+                alignment: Alignment.center,
+                child: SignInButton(
+                    Buttons.Twitter,
+                    text: "Sign in with Twitter",
+                    onPressed: _signInWithTwitter
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  Future<void> _signInWithTwitter() async {
+      late UserCredential userCredential;
+      final twitterLogin = new TwitterLogin(
+          apiKey: 'FCEkaIAUvTatODftHzKB32C4y',
+          apiSecretKey:'Rhx6ng3HdFP1wR4ZxchSwrAlU0RgwYFLjXi4p6mvlPy0d54xCC',
+          redirectURI: 'twittersdk://'
+      );
+      // https://spajam-final-98e88.firebaseapp.com/__/auth/handler
+      // Trigger the sign-in flow
+      final authResult = await twitterLogin.login();
+      switch (authResult.status) {
+        case TwitterLoginStatus.loggedIn:
+            final AuthCredential credential = TwitterAuthProvider.credential(
+              accessToken: authResult.authToken!,
+              secret: authResult.authTokenSecret!,
+            );
+            userCredential = await _auth.signInWithCredential(credential);
+
+            final user = userCredential.user!;
+            developer.log(authResult.authToken.toString());
+            developer.log(authResult.authTokenSecret.toString());
+            break;
+        case TwitterLoginStatus.cancelledByUser:
+        // cancel
+          print('====login cancel====');
+          break;
+        case TwitterLoginStatus.error:
+        // error
+          print('====login error====');
+          break;
+      }
+      // print(credential);
   }
 }
+

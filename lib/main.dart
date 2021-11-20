@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           colorScheme:ColorScheme.light(primary: Color(0xffFC7D3C), background: Color(0xfff2f2f7)),
           textTheme: TextTheme(
             headline1: GoogleFonts.roboto(
-                fontSize: 96,
+                fontSize: 40,
                 fontWeight: FontWeight.w300,
                 letterSpacing: -1.5
             ),
@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 1.5
             ),
           )),
-      home: MyHomePage(),
+      home: Toppage(),
 //      home: Timeline(),
       routes: <String, WidgetBuilder>{
          '/timeline': (BuildContext context) => Timeline(),
