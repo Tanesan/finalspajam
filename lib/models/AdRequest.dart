@@ -1,11 +1,9 @@
-class TimelineRequest {
+class AdRequest {
   final String id;
-
-  TimelineRequest({
+  AdRequest({
     required this.id,
   });
-
   Map<String, dynamic> toJson() => {
-        'id': id,
-      };
+    'id': id,
+  };
 }

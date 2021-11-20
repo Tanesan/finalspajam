@@ -3,5 +3,12 @@ class Argument {
   String? secretAccessToken;
   String? userId;
   String? targetUserId;
-  Argument({this.accessToken, this.secretAccessToken, this.userId, this.targetUserId});
+  String? targetUserName;
+
+  Argument(
+      {this.accessToken,
+      this.secretAccessToken,
+      this.userId,
+      this.targetUserId,
+      this.targetUserName});
 }

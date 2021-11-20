@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:finalspajam/models/TimelineModel.dart';
 import 'package:finalspajam/functions/calculateElapsedTime.dart';
@@ -35,7 +37,8 @@ class TimelineCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(Icons.favorite, color: Colors.grey),
-                              Text("${timeline.goodedBy}がいいねしました",
+                              Text(
+                                  "${utf8.decode(timeline.goodedBy.runes.toList())}がいいねしました",
                                   style: TextStyle(color: Colors.grey)),
                             ]),
                         SizedBox(height: 10),
@@ -44,7 +47,9 @@ class TimelineCard extends StatelessWidget {
                             children: [
                               SizedBox(
                                   width: .35 * width,
-                                  child: Text(timeline.senderName,
+                                  child: Text(
+                                      utf8.decode(
+                                          timeline.senderName.runes.toList()),
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                       overflow: TextOverflow.ellipsis)),
@@ -62,7 +67,7 @@ class TimelineCard extends StatelessWidget {
                               SizedBox(width: 10)
                             ]),
                         SizedBox(height: 5),
-                        Text(timeline.message),
+                        Text(utf8.decode(timeline.message.runes.toList())),
                         SizedBox(height: 10),
                         SizedBox(
                             width: .6 * width,
