@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:finalspajam/models/TimelineResponse.dart';
+import 'package:finalspajam/models/TimelineModel.dart';
 import 'package:finalspajam/functions/calculateElapsedTime.dart';
 
 class TimelineCard extends StatelessWidget {
-  final TimelineResponse response;
+  final TimelineModel timeline;
 
-  TimelineCard({required this.response});
+  TimelineCard({required this.timeline});
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    String elapsedTime = calculateElapsedTime(response.datetime);
+    String elapsedTime = calculateElapsedTime(timeline.datetime);
 
     return Container(
         padding: EdgeInsets.symmetric(vertical: 5),
@@ -24,7 +24,7 @@ class TimelineCard extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: CircleAvatar(
-                      backgroundImage: NetworkImage(response.iconUrl))),
+                      backgroundImage: NetworkImage(timeline.iconUrl))),
               Expanded(
                   flex: 4,
                   child: Column(
@@ -35,7 +35,7 @@ class TimelineCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(Icons.favorite, color: Colors.grey),
-                              Text("${response.goodedBy}がいいねしました",
+                              Text("${timeline.goodedBy}がいいねしました",
                                   style: TextStyle(color: Colors.grey)),
                             ]),
                         SizedBox(height: 10),
@@ -44,14 +44,14 @@ class TimelineCard extends StatelessWidget {
                             children: [
                               SizedBox(
                                   width: .35 * width,
-                                  child: Text(response.senderName,
+                                  child: Text(timeline.senderName,
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold),
                                       overflow: TextOverflow.ellipsis)),
                               SizedBox(width: 5),
                               SizedBox(
                                   width: .2 * width,
-                                  child: Text(response.senderId,
+                                  child: Text(timeline.senderId,
                                       style: TextStyle(color: Colors.grey),
                                       overflow: TextOverflow.ellipsis)),
                               SizedBox(width: 5),
@@ -62,7 +62,7 @@ class TimelineCard extends StatelessWidget {
                               SizedBox(width: 10)
                             ]),
                         SizedBox(height: 5),
-                        Text(response.message),
+                        Text(timeline.message),
                         SizedBox(height: 10),
                         SizedBox(
                             width: .6 * width,
@@ -74,7 +74,7 @@ class TimelineCard extends StatelessWidget {
                                   Icon(Icons.cached),
                                   Row(children: [
                                     Icon(Icons.favorite_border),
-                                    Text("${response.numberOfGoods}")
+                                    Text("${timeline.numberOfGoods}")
                                   ]),
                                   Icon(Icons.share)
                                 ])),
