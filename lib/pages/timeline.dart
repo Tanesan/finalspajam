@@ -21,13 +21,14 @@ class Timeline extends StatelessWidget {
        */
         body: Center(
             child: FutureBuilder(
-                future: startLearning(),
+                future: startLearning(args.targetUserId!),
                 builder:
                     (BuildContext context, AsyncSnapshot<bool> existSnapshot) {
                   if (!existSnapshot.hasData) {
                     return CircularProgressIndicator();
                   }
                   if (!existSnapshot.data!) {
+                    print(existSnapshot.data);
                     return Text("エラーが発生しました");
                   }
                   return StreamBuilder(
@@ -43,8 +44,11 @@ class Timeline extends StatelessWidget {
                             args.targetUserId!, streamSnapshot.data!)) {
                           return Timelines();
 //                          return TiemlinesAndAds();
+                        } else {
+                          print("target: ${args.targetUserId}");
+                          print("finished: ${streamSnapshot.data}");
+                          return Text("データ解析中です。しばらくお待ちください。");
                         }
-                        return Text("エラーが発生しました。");
                       });
                 })));
   }
