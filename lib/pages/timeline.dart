@@ -8,6 +8,7 @@ class Timeline extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    const String name = "スパニャン_グリーン";
 
     return Scaffold(
         /*
@@ -26,15 +27,18 @@ class Timeline extends StatelessWidget {
                   child: SizedBox(
                       width: .95 * width,
                       child: Column(children: [
-                        SizedBox(height: .1*height),
-                        SizedBox(height: .05*height,
-                            child: Text("${snapshot.data!.senderName}さんの投稿",
-                            style: TextStyle(fontWeight: FontWeight.bold))),
+                        SizedBox(height: .1 * height),
+                        SizedBox(
+                            height: .05 * height,
+                            child: Text("$nameさんのタイムライン",
+                                style: TextStyle(fontWeight: FontWeight.bold))),
                         Expanded(
                             child: ListView.builder(
-                                itemCount: 10,
+                                itemCount: snapshot.data!.timelines.length,
                                 itemBuilder: (BuildContext context, int index) {
-                                  return TimelineCard(response: snapshot.data!);
+                                  return TimelineCard(
+                                      timeline:
+                                          snapshot.data!.timelines[index]);
                                 }))
                       ])));
             }));

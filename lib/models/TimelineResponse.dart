@@ -1,31 +1,15 @@
-class TimelineResponse {
-  final String goodedBy;
-  final String iconUrl;
-  final String senderName;
-  final String senderId;
-  final int datetime;
-  final String message;
-  final int numberOfGoods;
+import 'package:finalspajam/models/TimelineModel.dart';
 
-  TimelineResponse({
-    required this.goodedBy,
-    required this.iconUrl,
-    required this.senderName,
-    required this.senderId,
-    required this.datetime,
-    required this.message,
-    required this.numberOfGoods
-  });
+class TimelineResponse {
+  final List<TimelineModel> timelines;
+
+  TimelineResponse({required this.timelines});
 
   factory TimelineResponse.fromJson(Map<String, dynamic> json) {
+    var timelines = json['timelines'] as List;
     return TimelineResponse(
-      goodedBy: json['goodedBy'],
-      iconUrl: json['iconUrl'],
-      senderName: json['senderName'],
-      senderId: json['senderId'],
-      datetime: json['datetime'],
-      message: json['message'],
-      numberOfGoods: json['numberOfGoods']
-    );
+        timelines: timelines
+            .map<TimelineModel>((item) => TimelineModel.fromJson(item))
+            .toList());
   }
 }
