@@ -4,7 +4,7 @@ import 'dart:convert'; //httpレスポンスをJSON形式に変換用
 import 'package:finalspajam/models/StartLearningRequest.dart';
 
 Future<bool> startLearning() async{ //Future xxx async{} という記法
-  var url = "http://172.16.0.223/creator/api/flutter_post_test";
+  var url = "https://jphacks-server-3gabclop4q-dt.a.run.app/target_user";
   var request = new StartLearningRequest(id: 1234);
   final response = await http.post(Uri.parse(url),
       body: json.encode(request.toJson()),

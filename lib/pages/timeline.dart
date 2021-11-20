@@ -31,7 +31,7 @@ class Timeline extends StatelessWidget {
                   }
                   return StreamBuilder(
                       stream: IOWebSocketChannel.connect(
-                              Uri.parse('ws://localhost:1234'))
+                              Uri.parse('ws://jphacks-server-3gabclop4q-dt.a.run.app/ws/notify'))
                           .stream,
                       builder:
                           (BuildContext context, AsyncSnapshot streamSnapshot) {
@@ -39,6 +39,7 @@ class Timeline extends StatelessWidget {
                           return Text("データ解析中です。しばらくお待ちください。");
                         }
                         if (streamSnapshot.data! != "") {
+                          print(streamSnapshot.data);
                           return FutureBuilder(
                               future: getTimeline(),
                               builder: (BuildContext context,

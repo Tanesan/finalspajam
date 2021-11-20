@@ -88,8 +88,8 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 1.5
             ),
           )),
-      home: Search(),
-//      home: Timeline(),
+//      home: Toppage(),
+      home: Timeline(),
       routes: <String, WidgetBuilder>{
          '/timeline': (BuildContext context) => Timeline(),
         '/search': (BuildContext context) => Search(),
