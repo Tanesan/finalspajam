@@ -86,7 +86,7 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 1.5
             ),
           )),
-      home: MyHomePage(title: "Title"),
+      home: MyHomePage(),
       // routes: <String, WidgetBuilder>{
       //   '/top': (BuildContext context) => MyHomePage(),
       // },
