@@ -48,11 +48,12 @@ class MyApp extends StatelessWidget {
             button: GoogleFonts.roboto(
                 fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
             caption: GoogleFonts.roboto(
-                fontSize: 19,
-                color: Color(0xffD26919),
+                fontSize: 16,
+                color: Colors.black,
+                // color: Color(0xffD26919),
                 fontWeight: FontWeight.w600,
                 letterSpacing: 0.4),
-            overline: GoogleFonts.roboto(
+            overline: GoogleFonts.roboto(color: Colors.black,
                 fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
           )),
       home: Toppage(),
