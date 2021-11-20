@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:finalspajam/functions/getFollowees.dart';
 import 'package:finalspajam/models/Argument.dart';
@@ -8,6 +10,7 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
     final Argument args =
         ModalRoute.of(context)!.settings.arguments as Argument;
     print(args.accessToken);
@@ -30,14 +33,13 @@ class Search extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: FutureBuilder(
               future: getFollowees(
-                  args.accessToken!,
-                  args.secretAccessToken!,
-                  args.userId!),
+                  args.accessToken!, args.secretAccessToken!, args.userId!),
               builder: (BuildContext context,
                   AsyncSnapshot<FolloweeResponse> snapshot) {
                 if (!snapshot.hasData) {
                   return CircularProgressIndicator();
                 }
+                print(snapshot.data!.followees[4].name);
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -97,34 +99,50 @@ class Search extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                        child: SingleChildScrollView(
-                            child: GestureDetector(
-                                onTap: () => print("As"),
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(24.0),
-                                  ),
-                                  elevation: 8.0,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 10.0, vertical: 6.0),
-                                  child: Container(
-                                    child: ListTile(
-                                      contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 10.0),
-                                      leading: CircleAvatar(
-                                          backgroundImage: NetworkImage(
-                                              "https://tanemura.dev/img/icons.png")),
-                                      title: Text("Keito Tanemura"),
-                                      subtitle: Text("twitter discription"),
-                                      trailing: Icon(Icons.arrow_forward),
-                                    ),
-                                  ),
-                                )))),
-                  ],
-                );
-              }),
-        ),
-      ),
-    ));
+                        child:SizedBox(
+                          height: 200.toDouble() * snapshot.data!.followees.length,
+                            child:
+                            ListView.builder(
+                                    itemCount: snapshot.data!.followees.length,
+                                shrinkWrap: true,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return GestureDetector(
+                                          onTap: () => print("As"),
+                                          child: Card(
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(24.0),
+                                            ),
+                                            elevation: 1.0,
+                                            margin: EdgeInsets.symmetric(
+                                                horizontal: 10.0, vertical: 6.0),
+                                            child: Container(
+                                              child: ListTile(
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                        horizontal: 20.0,
+                                                        vertical: 10.0),
+                                                leading: CircleAvatar(
+                                                    backgroundImage: NetworkImage(
+                                                        snapshot.data!.followees[index].iconUrl)),
+                                                title: Text(utf8.decode(snapshot.data!.followees[index].name.runes.toList())),
+                                                subtitle:
+                                                    Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text("@" + utf8.decode(snapshot.data!.followees[index].screenName.runes.toList()), textAlign: TextAlign.left),
+                                                        Text(utf8.decode(snapshot.data!.followees[index].description.runes.toList()), style: Theme.of(context).textTheme.caption),
+                                                      ],
+                                                    ),
+                                                trailing: Icon(Icons.arrow_forward),
+                                              ),
+                                            ),
+                                          ));
+                                    })),
+                )],
+                            );}),
+                ),
+        )));
   }
 }
