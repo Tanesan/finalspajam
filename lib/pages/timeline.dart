@@ -3,11 +3,15 @@ import 'package:web_socket_channel/io.dart';
 import 'package:finalspajam/components/TimelineCard.dart';
 import 'package:finalspajam/functions/getTimeline.dart';
 import 'package:finalspajam/functions/startLearning.dart';
+import 'package:finalspajam/functions/isAnalysisFinished.dart';
+import 'package:finalspajam/models/Argument.dart';
 import 'package:finalspajam/models/TimelineResponse.dart';
 
 class Timeline extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Argument args =
+        ModalRoute.of(context)!.settings.arguments as Argument;
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     const String name = "スパニャン_グリーン";
@@ -30,15 +34,16 @@ class Timeline extends StatelessWidget {
                     return Text("エラーが発生しました");
                   }
                   return StreamBuilder(
-                      stream: IOWebSocketChannel.connect(
-                              Uri.parse('ws://jphacks-server-3gabclop4q-dt.a.run.app/ws/notify'))
+                      stream: IOWebSocketChannel.connect(Uri.parse(
+                              'ws://jphacks-server-3gabclop4q-dt.a.run.app/ws/notify'))
                           .stream,
                       builder:
                           (BuildContext context, AsyncSnapshot streamSnapshot) {
                         if (!streamSnapshot.hasData) {
                           return Text("データ解析中です。しばらくお待ちください。");
                         }
-                        if (streamSnapshot.data! != "") {
+                        if (isAnalysisFinished(
+                            args.targetUserId!, streamSnapshot.data!)) {
                           print(streamSnapshot.data);
                           return FutureBuilder(
                               future: getTimeline(),
@@ -48,27 +53,27 @@ class Timeline extends StatelessWidget {
                                   return CircularProgressIndicator();
                                 }
                                 return SizedBox(
-                                        width: .95 * width,
-                                        child: Column(children: [
-                                          SizedBox(height: .1 * height),
-                                          SizedBox(
-                                              height: .05 * height,
-                                              child: Text("$nameさんのタイムライン",
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold))),
-                                          Expanded(
-                                              child: ListView.builder(
-                                                  itemCount: snapshot
-                                                      .data!.timelines.length,
-                                                  itemBuilder:
-                                                      (BuildContext context,
-                                                          int index) {
-                                                    return TimelineCard(
-                                                        timeline: snapshot.data!
-                                                            .timelines[index]);
-                                                  }))
-                                        ]));
+                                    width: .95 * width,
+                                    child: Column(children: [
+                                      SizedBox(height: .1 * height),
+                                      SizedBox(
+                                          height: .05 * height,
+                                          child: Text("$nameさんのタイムライン",
+                                              style: TextStyle(
+                                                  fontWeight:
+                                                      FontWeight.bold))),
+                                      Expanded(
+                                          child: ListView.builder(
+                                              itemCount: snapshot
+                                                  .data!.timelines.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return TimelineCard(
+                                                    timeline: snapshot.data!
+                                                        .timelines[index]);
+                                              }))
+                                    ]));
                               });
                         }
                         return Text("エラーが発生しました。");
