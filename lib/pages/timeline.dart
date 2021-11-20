@@ -41,8 +41,8 @@ class Timeline extends StatelessWidget {
                         }
                         if (isAnalysisFinished(
                             args.targetUserId!, streamSnapshot.data!)) {
-                          print(streamSnapshot.data);
                           return Timelines();
+//                          return TiemlinesAndAds();
                         }
                         return Text("エラーが発生しました。");
                       });
