@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:finalspajam/pages/top.dart';
 import 'package:finalspajam/pages/timeline.dart';
+import 'package:finalspajam/pages/search.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
             ),
             headline5: GoogleFonts.roboto(
                 fontSize: 24,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w600
             ),
             headline6: GoogleFonts.roboto(
                 fontSize: 22,
@@ -87,10 +88,11 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 1.5
             ),
           )),
-//      home: Toppage(),
-      home: Timeline(),
+      home: Search(),
+//      home: Timeline(),
       routes: <String, WidgetBuilder>{
          '/timeline': (BuildContext context) => Timeline(),
+        '/search': (BuildContext context) => Search(),
       },
     );
   }
