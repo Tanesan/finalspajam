@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:finalspajam/pages/top.dart';
+import 'package:finalspajam/pages/timeline.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -87,9 +88,10 @@ class MyApp extends StatelessWidget {
             ),
           )),
       home: MyHomePage(),
-      // routes: <String, WidgetBuilder>{
-      //   '/top': (BuildContext context) => MyHomePage(),
-      // },
+//      home: Timeline(),
+      routes: <String, WidgetBuilder>{
+         '/timeline': (BuildContext context) => Timeline(),
+      },
     );
   }
 }
