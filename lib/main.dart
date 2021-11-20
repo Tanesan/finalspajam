@@ -87,8 +87,8 @@ class MyApp extends StatelessWidget {
                 letterSpacing: 1.5
             ),
           )),
-      home: Toppage(),
-//      home: Timeline(),
+//      home: Toppage(),
+      home: Timeline(),
       routes: <String, WidgetBuilder>{
          '/timeline': (BuildContext context) => Timeline(),
       },
