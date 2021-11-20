@@ -64,8 +64,6 @@ class Toppage extends StatelessWidget {
         userCredential = await _auth.signInWithCredential(credential);
 
         final user = userCredential.user!;
-        developer.log(authResult.authToken.toString());
-        developer.log(authResult.authTokenSecret.toString());
         Navigator.of(context).pushNamed('/search',
             arguments: Argument(
                 accessToken: authResult.authToken!,
