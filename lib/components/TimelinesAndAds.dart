@@ -22,11 +22,11 @@ class TimelinesAndAds extends StatelessWidget {
             return CircularProgressIndicator();
           }
           return SizedBox(
-              width: .95 * width,
+              width: 1 * width,
               child: Column(children: [
                 SizedBox(height: .1 * height),
                 SizedBox(
-                    height: .05 * height,
+                    // height: .05 * height,
                     child: Text("${utf8.decode(args.targetUserName!.runes.toList())}さんのタイムライン",
                         style: TextStyle(fontWeight: FontWeight.bold))),
                 Expanded(

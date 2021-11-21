@@ -16,16 +16,10 @@ class Search extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as Argument;
 
     return Scaffold(
+        appBar: AppBar(
+            title: Text("誰のTLを表示しますか？"),
+        ),
         body: Container(
-            decoration: BoxDecoration(
-                gradient: RadialGradient(
-              radius: 2,
-              colors: [
-                Colors.white,
-                Color(0xff7783FF),
-                Color(0xffE5E5E5),
-              ],
-            )),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -46,13 +40,6 @@ class Search extends StatelessWidget {
                               return Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 64.0),
-                                      child: Text("誰のTLを表示しますか?",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .headline5),
-                                    ),
                                     Padding(
                                       padding: EdgeInsets.only(
                                           left: 16,
@@ -114,10 +101,9 @@ class Search extends StatelessWidget {
                                     Expanded(
                                         child: SizedBox(
                                             height: 200.toDouble() *
-                                                snapshot.data!.followees.length,
+                                                model.searchResultList.length,
                                             child: ListView.builder(
-                                                itemCount: model
-                                                    .searchResultList.length,
+                                                itemCount: model.searchResultList.length,
                                                 shrinkWrap: true,
                                                 itemBuilder:
                                                     (BuildContext context,
@@ -125,16 +111,10 @@ class Search extends StatelessWidget {
                                                   return GestureDetector(
                                                       onTap: () {
                                                         args.targetUserId =
-                                                            snapshot
-                                                                .data!
-                                                                .followees[
-                                                                    index]
+                                                            model.searchResultList[index]
                                                                 .id;
                                                         args.targetUserName =
-                                                            snapshot
-                                                                .data!
-                                                                .followees[
-                                                                    index]
+                                                            model.searchResultList[index]
                                                                 .name;
                                                         Navigator.of(context)
                                                             .pushNamed(
