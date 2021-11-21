@@ -10,6 +10,7 @@ class TimelineResponse {
     return TimelineResponse(
         timelines: timelines
             .map<TimelineModel>((item) {
+              print("hoge");
               print(TimelineModel.fromJson(item));
               return TimelineModel.fromJson(item);})
             .toList());

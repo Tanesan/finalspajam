@@ -61,14 +61,17 @@ class _TimelineState extends State<Timeline> {
                         if (!streamSnapshot.hasData) {
                           return Text("データ解析中です。しばらくお待ちください。");
                         }
+                        print(streamSnapshot.data);
                         if (isAnalysisFinished(
                             args.targetUserId!, streamSnapshot.data!)) {
                           return (_selectedIndex == 0 ? Timelines() : News(id: args.targetUserId!));
 //                          return TiemlinesAndAds();
                         } else {
+
                          */
                         print("target: ${args.targetUserId}");
                         print("finished: ${streamSnapshot.data}");
+
                         return _selectedIndex == 0
                             ? Timelines()
                             : News(id: args.targetUserId!);

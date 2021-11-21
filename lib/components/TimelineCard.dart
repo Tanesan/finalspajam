@@ -62,7 +62,7 @@ class TimelineCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                  width: .35 * width,
+                                  width: .3 * width,
                                   child: Text(
                                       isDummyUsed
                                           ? timeline.senderName

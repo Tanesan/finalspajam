@@ -25,6 +25,7 @@ class _TimelinesState extends State<Timelines> {
         builder:
             (BuildContext context, AsyncSnapshot<TimelineResponse> snapshot) {
           if (!snapshot.hasData) {
+            print("dummy");
             return CircularProgressIndicator();
           }
           return Padding(
