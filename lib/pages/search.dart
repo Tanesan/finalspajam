@@ -18,6 +18,7 @@ class Search extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
             title: Text("誰のTLを表示しますか？"),
+          automaticallyImplyLeading: false,
         ),
         body: Container(
             child: Center(
@@ -122,75 +123,86 @@ class Search extends StatelessWidget {
                                                                 arguments:
                                                                     args);
                                                       },
-                                                      child: Card(
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      24.0),
-                                                        ),
-                                                        elevation: 1.0,
-                                                        margin: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    10.0,
-                                                                vertical: 6.0),
-                                                        child: Container(
-                                                          child: ListTile(
-                                                            contentPadding:
-                                                                EdgeInsets.symmetric(
-                                                                    horizontal:
-                                                                        20.0,
-                                                                    vertical:
-                                                                        10.0),
-                                                            leading: CircleAvatar(
-                                                                backgroundImage:
-                                                                    NetworkImage(model
-                                                                        .searchResultList[
-                                                                            index]
-                                                                        .iconUrl)),
-                                                            title: Text(utf8
-                                                                .decode(model
-                                                                    .searchResultList[
-                                                                        index]
-                                                                    .name
-                                                                    .runes
-                                                                    .toList())),
-                                                            subtitle: Column(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .start,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                    "@" +
-                                                                        utf8.decode(model
-                                                                            .searchResultList[
-                                                                                index]
-                                                                            .screenName
-                                                                            .runes
-                                                                            .toList()),
-                                                                    textAlign:
-                                                                        TextAlign
-                                                                            .left),
-                                                                Text(
-                                                                    utf8.decode(model
-                                                                        .searchResultList[
-                                                                            index]
-                                                                        .description
-                                                                        .runes
-                                                                        .toList()),
-                                                                    style: Theme.of(
-                                                                            context)
-                                                                        .textTheme
-                                                                        .caption),
-                                                              ],
+                                                      child: Container(
+                                                      decoration: BoxDecoration(
+                                                        boxShadow: [
+                                                          BoxShadow(
+                                                            color: Colors.grey.withOpacity(0.1),
+                                                            spreadRadius: 1,
+                                                            blurRadius: 1,
+                                                            offset: Offset(1, 1), // changes position of shadow
+                                                          ),
+                                                          ]),
+                                                        child: Card(
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        24.0),
+                                                          ),
+                                                          elevation: 1.0,
+                                                          margin: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      10.0,
+                                                                  vertical: 6.0),
+                                                          child: Container(
+                                                            child: ListTile(
+                                                              contentPadding:
+                                                                  EdgeInsets.symmetric(
+                                                                      horizontal:
+                                                                          20.0,
+                                                                      vertical:
+                                                                          10.0),
+                                                              leading: CircleAvatar(
+                                                                  backgroundImage:
+                                                                      NetworkImage(model
+                                                                          .searchResultList[
+                                                                              index]
+                                                                          .iconUrl)),
+                                                              title: Text(utf8
+                                                                  .decode(model
+                                                                      .searchResultList[
+                                                                          index]
+                                                                      .name
+                                                                      .runes
+                                                                      .toList())),
+                                                              subtitle: Column(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                      "@" +
+                                                                          utf8.decode(model
+                                                                              .searchResultList[
+                                                                                  index]
+                                                                              .screenName
+                                                                              .runes
+                                                                              .toList()),
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .left),
+                                                                  Text(
+                                                                      utf8.decode(model
+                                                                          .searchResultList[
+                                                                              index]
+                                                                          .description
+                                                                          .runes
+                                                                          .toList()),
+                                                                      style: Theme.of(
+                                                                              context)
+                                                                          .textTheme
+                                                                          .caption),
+                                                                ],
+                                                              ),
+                                                              trailing: Icon(Icons
+                                                                  .arrow_forward),
                                                             ),
-                                                            trailing: Icon(Icons
-                                                                .arrow_forward),
                                                           ),
                                                         ),
                                                       ));

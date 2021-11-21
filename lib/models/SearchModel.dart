@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:finalspajam/models/FolloweeModel.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -16,9 +18,13 @@ class SearchModel extends ChangeNotifier {
       // ここから検索処理
       this.searchList.forEach(
             (element) {
+              // print(element.name);
+              // print(this.text);
           if (element.name.toLowerCase().contains(this.text.toLowerCase())) {
             // .contains で文字列の部分一致を判定できる
             searchResultList.add(element); // 一致している要素があれば追加する
+          }else if(utf8.decode(element.name.runes.toList()).contains(this.text.toLowerCase())){
+            searchResultList.add(element);
           }
         },
       );
