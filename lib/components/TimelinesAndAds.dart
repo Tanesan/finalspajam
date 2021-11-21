@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:finalspajam/components/AD.dart';
 import 'package:finalspajam/components/TimelineCard.dart';
@@ -25,7 +27,7 @@ class TimelinesAndAds extends StatelessWidget {
                 SizedBox(height: .1 * height),
                 SizedBox(
                     height: .05 * height,
-                    child: Text("${args.targetUserName}さんのタイムライン",
+                    child: Text("${utf8.decode(args.targetUserName!.runes.toList())}さんのタイムライン",
                         style: TextStyle(fontWeight: FontWeight.bold))),
                 Expanded(
                     child: ListView.builder(

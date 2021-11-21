@@ -47,7 +47,8 @@ class Timeline extends StatelessWidget {
                         } else {
                           print("target: ${args.targetUserId}");
                           print("finished: ${streamSnapshot.data}");
-                          return Text("データ解析中です。しばらくお待ちください。");
+                          return Timelines();
+//                          return Text("データ解析中です。しばらくお待ちください。");
                         }
                       });
                 })));

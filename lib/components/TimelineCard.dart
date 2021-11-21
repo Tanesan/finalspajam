@@ -13,6 +13,7 @@ class TimelineCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    bool isDummyUsed = true;
 
     String elapsedTime = calculateElapsedTime(timeline.datetime);
 
@@ -37,7 +38,7 @@ class TimelineCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(Icons.favorite, color: Colors.grey),
-                              Text(
+                              Text(isDummyUsed ? "${timeline.goodedBy}がいいねしました" :
                                   "${utf8.decode(timeline.goodedBy.runes.toList())}がいいねしました",
                                   style: TextStyle(color: Colors.grey)),
                             ]),
@@ -48,6 +49,7 @@ class TimelineCard extends StatelessWidget {
                               SizedBox(
                                   width: .35 * width,
                                   child: Text(
+                                    isDummyUsed ? timeline.senderName :
                                       utf8.decode(
                                           timeline.senderName.runes.toList()),
                                       style: TextStyle(
@@ -67,7 +69,7 @@ class TimelineCard extends StatelessWidget {
                               SizedBox(width: 10)
                             ]),
                         SizedBox(height: 5),
-                        Text(utf8.decode(timeline.message.runes.toList())),
+                        Text(isDummyUsed ? timeline.message :utf8.decode(timeline.message.runes.toList())),
                         SizedBox(height: 10),
                         SizedBox(
                             width: .6 * width,

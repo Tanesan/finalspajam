@@ -3,10 +3,13 @@ import 'dart:async'; //非同期処理用
 import 'dart:convert'; //httpレスポンスをJSON形式に変換用
 import 'package:finalspajam/models/FolloweeRequest.dart';
 import 'package:finalspajam/models/FolloweeResponse.dart';
+import 'package:finalspajam/data/followees.dart';
 
 Future<FolloweeResponse> getFollowees(
     String accessToken, String secretAccessToken, String userId) async {
   //Future xxx async{} という記法
+//  return FolloweeResponse.fromJson(followees);
+
   var url = "https://jphacks-server-3gabclop4q-dt.a.run.app/follow_list";
   var request = FolloweeRequest(
       accessToken: accessToken,

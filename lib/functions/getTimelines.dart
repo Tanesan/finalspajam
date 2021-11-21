@@ -3,11 +3,11 @@ import 'dart:async'; //非同期処理用
 import 'dart:convert'; //httpレスポンスをJSON形式に変換用
 import 'package:finalspajam/models/TimelineRequest.dart';
 import 'package:finalspajam/models/TimelineResponse.dart';
-//import 'package:finalspajam/data/timeline.dart';
+import 'package:finalspajam/data/timeline.dart';
 
-Future<TimelineResponse> getTimelines(String id) async{ //Future xxx async{} という記法
-//  return TimelineResponse.fromJson(timelineJson);
-
+Future<TimelineResponse> getTimelines(String id) async { //Future xxx async{} という記法
+    return TimelineResponse.fromJson(timelineJson);
+/*
   var url = "https://jphacks-server-3gabclop4q-dt.a.run.app/timelines";
   var request = new TimelineRequest(id: id);
   final response = await http.post(Uri.parse(url),
@@ -18,4 +18,6 @@ Future<TimelineResponse> getTimelines(String id) async{ //Future xxx async{} と
   } else {
     throw Exception('Failed');
   }
+
+ */
 }

@@ -9,7 +9,8 @@ class TimelineResponse {
     var timelines = json['timelines'] as List;
     return TimelineResponse(
         timelines: timelines
-            .map<TimelineModel>((item) => TimelineModel.fromJson(item))
+            .map<TimelineModel>((item) {
+              return TimelineModel.fromJson(item);})
             .toList());
   }
 }
