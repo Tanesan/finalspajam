@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             subtitle1: GoogleFonts.roboto(
                 fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: 0.15),
             subtitle2: GoogleFonts.roboto(
-                fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+                fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.1),
             bodyText1: GoogleFonts.roboto(
                 fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5),
             bodyText2: GoogleFonts.roboto(
@@ -49,11 +49,11 @@ class MyApp extends StatelessWidget {
                 fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
             caption: GoogleFonts.roboto(
                 fontSize: 16,
-                color: Colors.black,
+                color: Color(0xff666666),
                 // color: Color(0xffD26919),
                 fontWeight: FontWeight.w600,
                 letterSpacing: 0.4),
-            overline: GoogleFonts.roboto(color: Colors.black,
+            overline: GoogleFonts.roboto(color: Color(0xff666666),
                 fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
           )),
       home: Toppage(),
