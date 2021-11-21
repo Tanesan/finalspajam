@@ -34,6 +34,7 @@ class TimelineCard extends StatelessWidget {
 //                                crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 20),
+                        /*
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -43,6 +44,8 @@ class TimelineCard extends StatelessWidget {
                                   style: TextStyle(color: Colors.grey)),
                             ]),
                         SizedBox(height: 10),
+
+                         */
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -58,7 +61,7 @@ class TimelineCard extends StatelessWidget {
                               SizedBox(width: 5),
                               SizedBox(
                                   width: .2 * width,
-                                  child: Text(timeline.senderId,
+                                  child: Text("@${timeline.senderId}",
                                       style: TextStyle(color: Colors.grey),
                                       overflow: TextOverflow.ellipsis)),
                               SizedBox(width: 5),

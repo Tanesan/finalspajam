@@ -1,14 +1,12 @@
 class TimelineModel {
-  final String goodedBy;
   final String iconUrl;
   final String senderName;
   final String senderId;
-  final int datetime;
+  final DateTime datetime;
   final String message;
   final int numberOfGoods;
 
   TimelineModel({
-    required this.goodedBy,
     required this.iconUrl,
     required this.senderName,
     required this.senderId,
@@ -19,13 +17,12 @@ class TimelineModel {
 
   factory TimelineModel.fromJson(Map<String, dynamic> json) {
     return TimelineModel(
-        goodedBy: json['goodedBy'],
-        iconUrl: json['iconUrl'],
-        senderName: json['senderName'],
-        senderId: json['senderId'],
-        datetime: json['datetime'],
+        iconUrl: json['profile_image_url'],
+        senderName: json['name'],
+        senderId: json['screen_name'],
+        datetime: DateTime.parse(json['created_at']),
         message: json['message'],
-        numberOfGoods: json['numberOfGoods']
+        numberOfGoods: int.parse(json['favourite_count'])
     );
   }
 }

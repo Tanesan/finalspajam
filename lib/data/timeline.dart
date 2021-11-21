@@ -3,30 +3,20 @@ import 'dart:convert';
 var timelineJson = {
   "timelines": [
     {
-//      "goodedBy": utf8.encode("スパニャン_グリーン"),
-      "goodedBy": "スパニャン_グリーン",
-      "iconUrl":
-          "https://www.nj.com/resizer/zovGSasCaR41h_yUGYHXbVTQW2A=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg",
-//      "senderName": utf8.encode("スパニャン_オレンジ"),
-      "senderName": "スパニャン_オレンジ",
-      "senderId": "@spanyan_orange",
-      "datetime": 1637454631035,
-//      "message": utf8.encode("SPAJAM予選突破した！祝本戦出場！箱根だ〜\n温泉満喫して普通に寝落ちしそう。。。\n優勝できるように頑張るぞ〜"),
-      "message": "SPAJAM予選突破した！祝本戦出場！箱根だ〜\n温泉満喫して普通に寝落ちしそう。。。\n優勝できるように頑張るぞ〜",
-      "numberOfGoods": 9
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1134537628123115521/RqPloDPr_normal.png",
+      "name": "Wolfram|Alpha",
+      "screen_name": "Wolfram_Alpha",
+      "created_at": "2021-11-20T00:25:00+00:00",
+      "message": "Always good to do some stretches after a long week ☺️ https://t.co/E96CzIqPEa https://t.co/3ltVLLPdaR",
+      "favourite_count": "13"
     },
     {
-//      "goodedBy": utf8.encode("スパニャン_グリーン"),
-      "goodedBy": "スパニャン_グリーン",
-      "iconUrl":
-          "https://www.nj.com/resizer/zovGSasCaR41h_yUGYHXbVTQW2A=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/SJGKVE5UNVESVCW7BBOHKQCZVE.jpg",
-//      "senderName": utf8.encode("スパニャン_オレンジ"),
-      "senderName": "スパニャン_オレンジ",
-      "senderId": "@spanyan_orange",
-      "datetime": 1637454631035,
-//      "message": utf8.encode("SPAJAM予選突破した！祝本戦出場！箱根だ〜\n温泉満喫して普通に寝落ちしそう。。。\n優勝できるように頑張るぞ〜"),
-      "message": "SPAJAM予選突破した！祝本戦出場！箱根だ〜\n温泉満喫して普通に寝落ちしそう。。。\n優勝できるように頑張るぞ〜" ,
-      "numberOfGoods": 9
-    }
+      "profile_image_url": "http://pbs.twimg.com/profile_images/1134537628123115521/RqPloDPr_normal.png",
+      "name": "Wolfram|Alpha",
+      "screen_name": "Wolfram_Alpha",
+      "created_at": "2021-11-20T00:25:00+00:00",
+      "message": "Always good to do some stretches after a long week ☺️ https://t.co/E96CzIqPEa https://t.co/3ltVLLPdaR",
+      "favourite_count": "13"
+    },
   ]
 };
