@@ -9,8 +9,8 @@ Future<FolloweeResponse> getFollowees(
     String accessToken, String secretAccessToken, String userId) async {
   //Future xxx async{} という記法
 //  return FolloweeResponse.fromJson(followees);
-
-  var url = "https://jphacks-server-3gabclop4q-dt.a.run.app/follow_list";
+  var url = "http://192.168.43.95:8080/follow_list";
+//  var url = "https://jphacks-server-3gabclop4q-dt.a.run.app/follow_list";
   var request = FolloweeRequest(
       accessToken: accessToken,
       secretAccessToken: secretAccessToken,

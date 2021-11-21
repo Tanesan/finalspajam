@@ -51,7 +51,7 @@ class _TimelineState extends State<Timeline> {
                   }
                   return StreamBuilder(
                       stream: IOWebSocketChannel.connect(Uri.parse(
-                              'ws://jphacks-server-3gabclop4q-dt.a.run.app/ws/notify'))
+                              'ws://192.168.43.95:8080/ws/notify'))
                           .stream,
                       builder:
                           (BuildContext context, AsyncSnapshot streamSnapshot) {
@@ -60,12 +60,12 @@ class _TimelineState extends State<Timeline> {
                         }
                         if (isAnalysisFinished(
                             args.targetUserId!, streamSnapshot.data!)) {
-                          return (_selectedIndex == 0 ? Timelines() : News());
+                          return (_selectedIndex == 0 ? Timelines() : News(id: args.targetUserId!));
 //                          return TiemlinesAndAds();
                         } else {
                           print("target: ${args.targetUserId}");
                           print("finished: ${streamSnapshot.data}");
-                          return _selectedIndex == 0 ? Timelines() : News();
+                          return _selectedIndex == 0 ? Timelines() : News(id: args.targetUserId!);
 //                          return Text("データ解析中です。しばらくお待ちください。");
                         }
                       });
