@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.from(
           colorScheme: ColorScheme.light(
-              primary: Color(0xffFC7D3C), background: Color(0xfff2f2f7)),
+              primary: Color(0xff1D9BF0), background: Color(0xffffffff)),
           textTheme: TextTheme(
             headline1: GoogleFonts.mPlus1p(
                 fontSize: 40, fontWeight: FontWeight.w300, letterSpacing: -1.5),
@@ -40,11 +40,11 @@ class MyApp extends StatelessWidget {
             subtitle1: GoogleFonts.mPlus1p(
                 fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: 0.15),
             subtitle2: GoogleFonts.mPlus1p(
-                fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+                color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w800, letterSpacing: 0.1),
             bodyText1: GoogleFonts.mPlus1p(
-                fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5),
+                color: Color(0xff000000), fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 0.5),
             bodyText2: GoogleFonts.mPlus1p(
-                fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
+                color: Color(0xff8B98A4), fontSize: 14, fontWeight: FontWeight.w800, letterSpacing: 0.25),
             button: GoogleFonts.mPlus1p(
                 fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
             caption: GoogleFonts.mPlus1p(

@@ -27,29 +27,29 @@ class _TimelinesState extends State<Timelines> {
           if (!snapshot.hasData) {
             return CircularProgressIndicator();
           }
-          print("after");
-          return SizedBox(
-              width: .95 * width,
-              child: Column(children: [
-                SizedBox(height: .1 * height),
-                SizedBox(
-                    height: .05 * height,
-                    child: Text(
-                        "${utf8.decode(args.targetUserName!.runes.toList())}さんのタイムライン",
-                        style: TextStyle(fontWeight: FontWeight.bold))),
-                Expanded(
-                    child: RefreshIndicator(
-                        onRefresh: () async {
-                          setState(() {});
-                        },
-                        child: ListView.builder(
-                            physics: AlwaysScrollableScrollPhysics(),
-                            itemCount: snapshot.data!.timelines.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return TimelineCard(
-                                  timeline: snapshot.data!.timelines[index]);
-                            })))
-              ]));
+          return Padding(
+            padding: EdgeInsets.only(right: 8, left: 8),
+            child: Column(children: [
+                  SizedBox(height: .05 * height),
+                  SizedBox(
+                      height: .05 * height,
+                      child: Text(
+                          "${utf8.decode(args.targetUserName!.runes.toList())}さんのタイムライン",
+                          style: TextStyle(fontWeight: FontWeight.bold))),
+                  Expanded(
+                      child: RefreshIndicator(
+                          onRefresh: () async {
+                            setState(() {});
+                          },
+                          child: ListView.builder(
+                              physics: AlwaysScrollableScrollPhysics(),
+                              itemCount: snapshot.data!.timelines.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return TimelineCard(
+                                    timeline: snapshot.data!.timelines[index]);
+                              })))
+                ]),
+          );
         });
   }
 }
