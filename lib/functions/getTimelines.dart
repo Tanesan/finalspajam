@@ -9,6 +9,7 @@ Future<TimelineResponse> getTimelines(String id) async { //Future xxx async{} „Å
     return TimelineResponse.fromJson(timelineJson);
 /*
   var url = "https://jphacks-server-3gabclop4q-dt.a.run.app/timelines";
+  var url = "http://${endpoint}timelines";
   var request = new TimelineRequest(id: id);
   final response = await http.post(Uri.parse(url),
       body: json.encode(request.toJson()),

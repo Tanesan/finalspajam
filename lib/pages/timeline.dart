@@ -7,6 +7,7 @@ import 'package:finalspajam/components/News.dart';
 import 'package:finalspajam/functions/startLearning.dart';
 import 'package:finalspajam/functions/isAnalysisFinished.dart';
 import 'package:finalspajam/models/Argument.dart';
+import 'package:finalspajam/constants.dart';
 
 class Timeline extends StatefulWidget {
   const Timeline({Key? key}) : super(key: key);
@@ -33,9 +34,9 @@ class _TimelineState extends State<Timeline> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(_selectedIndex == 0 ?
-          "${utf8.decode(args.targetUserName!.runes.toList())}さんの投稿" :
-          "${utf8.decode(args.targetUserName!.runes.toList())}さんが読んでそうなニュース"),
+          title: Text(_selectedIndex == 0
+              ? "${utf8.decode(args.targetUserName!.runes.toList())}さんの投稿"
+              : "${utf8.decode(args.targetUserName!.runes.toList())}さんが読んでそうなニュース"),
         ),
         body: Center(
             child: FutureBuilder(
@@ -50,11 +51,13 @@ class _TimelineState extends State<Timeline> {
                     return Text("エラーが発生しました");
                   }
                   return StreamBuilder(
-                      stream: IOWebSocketChannel.connect(Uri.parse(
-                              'ws://192.168.43.95:8080/ws/notify'))
+                      stream: IOWebSocketChannel.connect(
+                              //Uri.parse('ws://192.168.43.95:8080/ws/notify'))
+                          Uri.parse('ws://${endpoint}ws/notify'))
                           .stream,
                       builder:
                           (BuildContext context, AsyncSnapshot streamSnapshot) {
+                        /*
                         if (!streamSnapshot.hasData) {
                           return Text("データ解析中です。しばらくお待ちください。");
                         }
@@ -63,11 +66,14 @@ class _TimelineState extends State<Timeline> {
                           return (_selectedIndex == 0 ? Timelines() : News(id: args.targetUserId!));
 //                          return TiemlinesAndAds();
                         } else {
-                          print("target: ${args.targetUserId}");
-                          print("finished: ${streamSnapshot.data}");
-                          return _selectedIndex == 0 ? Timelines() : News(id: args.targetUserId!);
+                         */
+                        print("target: ${args.targetUserId}");
+                        print("finished: ${streamSnapshot.data}");
+                        return _selectedIndex == 0
+                            ? Timelines()
+                            : News(id: args.targetUserId!);
 //                          return Text("データ解析中です。しばらくお待ちください。");
-                        }
+//                        }
                       });
                 })),
         bottomNavigationBar: BottomNavigationBar(
