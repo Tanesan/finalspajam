@@ -22,38 +22,38 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.light(
               primary: Color(0xffFC7D3C), background: Color(0xfff2f2f7)),
           textTheme: TextTheme(
-            headline1: GoogleFonts.roboto(
+            headline1: GoogleFonts.mPlus1p(
                 fontSize: 40, fontWeight: FontWeight.w300, letterSpacing: -1.5),
-            headline2: GoogleFonts.roboto(
+            headline2: GoogleFonts.mPlus1p(
                 fontSize: 60, fontWeight: FontWeight.w300, letterSpacing: -0.5),
-            headline3: GoogleFonts.roboto(
+            headline3: GoogleFonts.mPlus1p(
                 fontSize: 42, color: Colors.black, fontWeight: FontWeight.w600),
-            headline4: GoogleFonts.roboto(
+            headline4: GoogleFonts.mPlus1p(
                 fontSize: 28,
                 color: Colors.black,
                 fontWeight: FontWeight.w800,
                 letterSpacing: 0.25),
             headline5:
-                GoogleFonts.roboto(fontSize: 24, fontWeight: FontWeight.w600),
-            headline6: GoogleFonts.roboto(
+                GoogleFonts.mPlus1p(fontSize: 24, fontWeight: FontWeight.w600),
+            headline6: GoogleFonts.mPlus1p(
                 fontSize: 22, fontWeight: FontWeight.w800, letterSpacing: 0.15),
-            subtitle1: GoogleFonts.roboto(
+            subtitle1: GoogleFonts.mPlus1p(
                 fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: 0.15),
-            subtitle2: GoogleFonts.roboto(
+            subtitle2: GoogleFonts.mPlus1p(
                 fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.1),
-            bodyText1: GoogleFonts.roboto(
+            bodyText1: GoogleFonts.mPlus1p(
                 fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5),
-            bodyText2: GoogleFonts.roboto(
+            bodyText2: GoogleFonts.mPlus1p(
                 fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.25),
-            button: GoogleFonts.roboto(
+            button: GoogleFonts.mPlus1p(
                 fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 1.25),
-            caption: GoogleFonts.roboto(
+            caption: GoogleFonts.mPlus1p(
                 fontSize: 16,
                 color: Color(0xff666666),
                 // color: Color(0xffD26919),
                 fontWeight: FontWeight.w600,
                 letterSpacing: 0.4),
-            overline: GoogleFonts.roboto(color: Color(0xff666666),
+            overline: GoogleFonts.mPlus1p(color: Color(0xff666666),
                 fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 1.5),
           )),
       home: Toppage(),

@@ -18,20 +18,40 @@ class Toppage extends StatelessWidget {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-            gradient: RadialGradient(
-          radius: 2,
-          colors: [
-            Colors.white,
-            Colors.blue,
-          ],
-        )),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment(-0.4, -0.7),
+            stops: [0.0, 0.125, 0.125, 0.25, 0.25, 0.375, 0.375, 0.5, 0.5, 0.625, 0.625, 0.75, 0.75, 0.875, 0.875, 1],
+            colors: [
+              Color(0xffd9e9fd),
+              Color(0xffd9e9fd),
+              Colors.white,
+              Colors.white,
+              Color(0xffd9e9fd),
+              Color(0xffd9e9fd),
+              Colors.white,
+              Colors.white,
+              Color(0xffd9e9fd),
+              Color(0xffd9e9fd),
+              Colors.white,
+              Colors.white,
+              Color(0xffd9e9fd),
+              Color(0xffd9e9fd),
+              Colors.white,
+              Colors.white,
+            ],
+            tileMode: TileMode.repeated,
+          ),
+        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("なりきり?!CHANGE",
-                  style: Theme.of(context).textTheme.headline1),
+              Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Image.asset('assets/images/logo.png'),
+              ),
               Container(
                 padding: const EdgeInsets.all(16),
                 alignment: Alignment.center,
