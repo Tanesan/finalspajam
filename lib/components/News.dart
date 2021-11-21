@@ -9,7 +9,8 @@ import 'package:finalspajam/functions/calculateElapsedTime.dart';
 import 'package:finalspajam/functions/getNews.dart';
 
 class News extends StatefulWidget {
-  const News({Key? key}) : super(key: key);
+  final String id;
+  const News({Key? key, required this.id}) : super(key: key);
 
   @override
   _NewsState createState() => _NewsState();
@@ -22,7 +23,7 @@ class _NewsState extends State<News> {
     double height = MediaQuery.of(context).size.height;
 
     return FutureBuilder(
-        future: getNews(),
+        future: getNews(widget.id),
         builder: (BuildContext context, AsyncSnapshot<NewsResponse> snapshot) {
           if (!snapshot.hasData) {
             return CircularProgressIndicator();
