@@ -52,10 +52,10 @@ class TimelineCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Icon(Icons.favorite, color: Colors.grey),
-                              Text(isDummyUsed ? "${timeline.goodedBy}がいいねしました" :
-                                  "${utf8.decode(timeline.goodedBy.runes.toList())}がいいねしました",
-                                  style: TextStyle(color: Colors.grey)),
-                            ]),
+                            //   Text(isDummyUsed ? "${timeline.goodedBy}がいいねしました" :
+                            //       "${utf8.decode(timeline.goodedBy.runes.toList())}がいいねしました",
+                            //       style: TextStyle(color: Colors.grey)),
+                            // ]),
                         SizedBox(height: 10),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,7 +66,7 @@ class TimelineCard extends StatelessWidget {
                                     isDummyUsed ? timeline.senderName :
                                       utf8.decode(
                                           timeline.senderName.runes.toList()),
-                                      ,style: Theme.of(context).textTheme.subtitle2,
+                                      style: Theme.of(context).textTheme.subtitle2,
                                       overflow: TextOverflow.ellipsis)),
                               SizedBox(width: 5),
                               SizedBox(
@@ -99,7 +99,7 @@ class TimelineCard extends StatelessWidget {
                                   Icon(Icons.share)
                                 ])),
                         SizedBox(height: 20)
-                      ]))
-            ])));
+                      ])
+            ]))])));
   }
 }
