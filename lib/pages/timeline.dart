@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:finalspajam/components/Timelines.dart';
@@ -30,11 +32,11 @@ class _TimelineState extends State<Timeline> {
     double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        /*
         appBar: AppBar(
-          title: Text("Timeline"),
+          title: Text(_selectedIndex == 0 ?
+          "${utf8.decode(args.targetUserName!.runes.toList())}さんの投稿" :
+          "${utf8.decode(args.targetUserName!.runes.toList())}さんが読んでそうなニュース"),
         ),
-       */
         body: Center(
             child: FutureBuilder(
                 future: startLearning(args.targetUserId!),
@@ -54,22 +56,22 @@ class _TimelineState extends State<Timeline> {
                       builder:
                           (BuildContext context, AsyncSnapshot streamSnapshot) {
                         if (!streamSnapshot.hasData) {
-                            return Text("データ解析中です。しばらくお待ちください。");
-                          }
-                          if (isAnalysisFinished(
-                              args.targetUserId!, streamSnapshot.data!)) {
+                          return Text("データ解析中です。しばらくお待ちください。");
+                        }
+                        if (isAnalysisFinished(
+                            args.targetUserId!, streamSnapshot.data!)) {
                           return (_selectedIndex == 0 ? Timelines() : News());
 //                          return TiemlinesAndAds();
                         } else {
                           print("target: ${args.targetUserId}");
                           print("finished: ${streamSnapshot.data}");
-                          return Timelines();
+                          return _selectedIndex == 0 ? Timelines() : News();
 //                          return Text("データ解析中です。しばらくお待ちください。");
                         }
                       });
                 })),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.blue,
+            backgroundColor: Colors.blue,
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
