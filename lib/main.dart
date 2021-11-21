@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             subtitle1: GoogleFonts.roboto(
                 fontSize: 18, fontWeight: FontWeight.w800, letterSpacing: 0.15),
             subtitle2: GoogleFonts.roboto(
-                fontSize: 14, fontWeight: FontWeight.w500, letterSpacing: 0.1),
+                fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.1),
             bodyText1: GoogleFonts.roboto(
                 fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.5),
             bodyText2: GoogleFonts.roboto(
