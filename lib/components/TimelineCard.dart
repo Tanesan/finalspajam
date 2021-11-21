@@ -20,8 +20,7 @@ class TimelineCard extends StatelessWidget {
     return Container(
         padding: EdgeInsets.symmetric(vertical: 5),
         decoration: BoxDecoration(
-            borderRadius:
-            const BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(32.0),
             ),
             boxShadow: [
@@ -48,6 +47,7 @@ class TimelineCard extends StatelessWidget {
 //                                crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 20),
+                        /*
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -57,16 +57,20 @@ class TimelineCard extends StatelessWidget {
                             //       style: TextStyle(color: Colors.grey)),
                             // ]),
                         SizedBox(height: 10),
+                         */
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
                                   width: .35 * width,
                                   child: Text(
-                                    isDummyUsed ? timeline.senderName :
-                                      utf8.decode(
-                                          timeline.senderName.runes.toList()),
-                                      style: Theme.of(context).textTheme.subtitle2,
+                                      isDummyUsed
+                                          ? timeline.senderName
+                                          : utf8.decode(timeline
+                                              .senderName.runes
+                                              .toList()),
+                                      style:
+                                          Theme.of(context).textTheme.subtitle2,
                                       overflow: TextOverflow.ellipsis)),
                               SizedBox(width: 5),
                               SizedBox(
@@ -82,7 +86,9 @@ class TimelineCard extends StatelessWidget {
                               SizedBox(width: 10)
                             ]),
                         SizedBox(height: 5),
-                        Text(isDummyUsed ? timeline.message :utf8.decode(timeline.message.runes.toList())),
+                        Text(isDummyUsed
+                            ? timeline.message
+                            : utf8.decode(timeline.message.runes.toList())),
                         SizedBox(height: 10),
                         SizedBox(
                             width: .6 * width,
@@ -99,7 +105,7 @@ class TimelineCard extends StatelessWidget {
                                   Icon(Icons.share)
                                 ])),
                         SizedBox(height: 20)
-                      ])
-            ]))])));
+                      ]))
+            ])));
   }
 }
